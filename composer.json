@@ -1,7 +1,7 @@
 {
 	"name": "openthc/sdb",
 	"description": "OpenTHC Strain Database",
-	"license": "MIT",
+	"license": "GPL-3.0-only",
 	"repositories": [
 		{
 			"type": "vcs",
