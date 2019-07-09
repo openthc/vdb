@@ -17,6 +17,8 @@ class Search
 		$off = 0;
 		$lim = 25;
 
+		$q = trim($q);
+
 		$p = intval($p);
 		$p = max(1, $p);
 		if ($p >= 1) {
@@ -24,25 +26,32 @@ class Search
 			$off = $p * $lim;
 		}
 
-		$q = trim($q);
+		$sql_where = array();
+		$arg = array(
+			':q0' => $q
+		);
+
 		if (strlen($q) <= 2) {
-			$q = sprintf('%s%%', $q);
+			if ('#' == $q) {
+				// $q = sprintf(')
+				$sql_where[] = "name ~ '^[0123456789].*'";
+			} else {
+				$sql_where[] = 'name ILIKE :q0';
+				$arg[':q0'] = sprintf('%s%%', $q)
+			}
 		} else {
-			$q = sprintf('%%%s%%', $q);
+			$sql_where[] = 'name ILIKE :q0';
+			$arg[':q0'] = sprintf('%%%s%%', $q)
 		}
 
 		$sql = 'SELECT * FROM strain';
 		$sql.= ' WHERE ';
-		$sql.= ' name ILIKE :q0';
+		$sql.= implode(' AND ', $sql_where);
 		//$sql.= ' OR full_text @@ ts_query(:q1)';
 		//$sql.= ' OR
 		$sql.= ' ORDER BY name';
 		$sql.= sprintf(' OFFSET %d', $off);
 		$sql.= sprintf(' LIMIT %d', $lim);
-
-		$arg = array(
-			':q0' => $q
-		);
 
 		$sql_max = preg_replace('/SELECT .+ FROM/', 'SELECT count(id) FROM', $sql);
 		$sql_max = preg_replace('/LIMIT \d+/', null, $sql_max);

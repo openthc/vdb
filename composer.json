@@ -23,8 +23,5 @@
 		"ext-PDO": "*",
 		"edoceo/radix": "dev-master",
 		"openthc/common": "dev-master",
-		"slim/slim": "3.12.0",
-		"slim/twig-view": "2.4.0",
-		"twig/twig": "2.6.2"
 	}
 }

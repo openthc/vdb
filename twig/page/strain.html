@@ -1,0 +1,67 @@
+{#
+	Strain View
+#}
+
+{% extends "layout/html.html" %}
+
+{% block body %}
+
+<h1>{{ Strain.name }}</h1>
+<h2>{{ Strain.type }}</h1>
+
+<section>
+
+	<h3>Links:</h3>
+
+	<div class="btn-group">
+
+	{% if Strain.link_leafly %}
+		<a class="btn btn-outline-secondary" href="{{ Strain.link_leafly }}" target="_blank">Leafly</a>
+	{% else %}
+		<a class="btn btn-outline-secondary" href="https://duckduckgo.com/?q=leafly%3A{{ Strain.name }}" target="_blank">Search Leafly</a>
+	{% endif %}
+
+	{% if Strain.link_allbud %}
+		<a class="btn btn-outline-secondary" href="{{ Strain.link_allbud }}" target="_blank">AllBud</a>
+	{% else %}
+		<a class="btn btn-outline-secondary" href="https://duckduckgo.com/?q=allbud%3A{{ Strain.name }}" target="_blank">Search AllBud</a>
+	{% endif %}
+
+	{% if Strain.link_wikileaf %}
+		<a class="btn btn-outline-secondary" href="{{ Strain.link_wikileaf }}" target="_blank">WikiLeaf</a>
+	{% else %}
+		<a class="btn btn-outline-secondary" href="https://duckduckgo.com/?q=wikileaf%3A{{ Strain.name }}" target="_blank">Search Wikileaf</a>
+	{% endif %}
+
+	{% if Strain.link_kannapedia %}
+		<a class="btn btn-outline-secondary" href="{{ Strain.link_kannapedia }}" target="_blank">Kannapedia</a>
+	{% else %}
+		<a class="btn btn-outline-secondary" href="https://duckduckgo.com/?q=Kannapedia%3A{{ Strain.name }}" target="_blank">Search Kannapedia</a>
+	{% endif %}
+
+	</div>
+
+</section>
+
+<section>
+	<h3>Images</h3>
+	<p>No Images found, if you have some you can upload them, it would be nice.</p>
+	<p>All images become part and property of our Open Strain Dataset which is distributed under a CCA license.</p>
+</section>
+
+<section>
+
+<h3>Add Linked Page</h3>
+<p>Strains with more, and accurate, linked pages rank higher.</p>
+
+<form action="/strain/save">
+<div class="input-group">
+	<input class="form-control">
+	<div class="input-group-append">
+		<button class="btn btn-outline-success"><i class="fa fa-save"></i></button>
+	</div>
+</div>
+</form>
+</section>
+
+{% endblock %}
