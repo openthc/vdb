@@ -26,7 +26,7 @@ $app = new \OpenTHC\App($cfg);
 $con = $app->getContainer();
 $con['DB'] = function() {
 	$cfg = \OpenTHC\Config::get('database_main');
-	return new \Edoceo\Radix\DB\SQL(sprintf('pgsql:dbname=%s', $cfg['database']), $cfg['username'], $cfg['password']);
+	return new \Edoceo\Radix\DB\SQL(sprintf('pgsql:host=%s;dbname=%s', $cfg['hostname'], $cfg['database']), $cfg['username'], $cfg['password']);
 };
 
 // Lookup Specific Datas

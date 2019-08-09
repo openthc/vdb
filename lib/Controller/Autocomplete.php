@@ -39,6 +39,7 @@ class Autocomplete extends \OpenTHC\Controller\Base
 				'label' => $n,
 				'value' => $rec['name'],
 				'strain' => array(
+					'id' => $rec['id'],
 					'name' => $rec['name'],
 					'code' => $rec['code'],
 					'type' => $rec['type'],

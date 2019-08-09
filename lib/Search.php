@@ -34,14 +34,15 @@ class Search
 		if (strlen($q) <= 2) {
 			if ('#' == $q) {
 				// $q = sprintf(')
-				$sql_where[] = "name ~ '^[0123456789].*'";
+				$sql_where[] = 'name ~ :q0';
+				$arg[':q0'] = '^[0123456789].*';
 			} else {
 				$sql_where[] = 'name ILIKE :q0';
-				$arg[':q0'] = sprintf('%s%%', $q)
+				$arg[':q0'] = sprintf('%s%%', $q);
 			}
 		} else {
 			$sql_where[] = 'name ILIKE :q0';
-			$arg[':q0'] = sprintf('%%%s%%', $q)
+			$arg[':q0'] = sprintf('%%%s%%', $q);
 		}
 
 		$sql = 'SELECT * FROM strain';

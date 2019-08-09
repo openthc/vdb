@@ -22,6 +22,6 @@
 		"ext-sockets": "*",
 		"ext-PDO": "*",
 		"edoceo/radix": "dev-master",
-		"openthc/common": "dev-master",
+		"openthc/common": "dev-master"
 	}
 }
