@@ -12,6 +12,12 @@ class Search
 		$this->_container = $c;
 	}
 
+	/**
+	 * Search
+	 * @param [type] $q Query Term
+	 * @param integer $p Page Offset
+	 * @return [type] [description]
+	 */
 	function search($q, $p=0)
 	{
 		$off = 0;
