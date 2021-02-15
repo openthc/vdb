@@ -8,7 +8,7 @@
 		}
 	},
 	"require": {
-		"php": ">=7.0.0",
+		"php": ">=7.3.0",
 		"ext-curl": "*",
 		"ext-date": "*",
 		"ext-json": "*",
@@ -16,6 +16,7 @@
 		"ext-sockets": "*",
 		"ext-PDO": "*",
 		"edoceo/radix": "dev-master",
-		"openthc/common": "dev-master"
+		"openthc/common": "dev-master",
+		"phpunit/phpunit": "9.5.2"
 	}
 }
