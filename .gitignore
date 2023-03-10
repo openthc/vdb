@@ -1,7 +1,28 @@
-boot.ini
-composer.lock
-composer.phar
-etc/ssl
-node_modules/
-vendor/
+#
+# OpenTHC .gitignore
+#
 
+**/.idea/workspace.xml
+**/.idea/tasks.xml
+*.phar
+.build/
+.config/
+.env*
+.gradle/
+.idea/
+.local/
+.netlify/
+.vscode/
+bower_components/
+build/
+composer.lock
+Custom/
+etc/
+node_modules/
+public/
+release/
+test/*.xsl
+var/
+vendor/
+webroot/pub/
+webroot/test-output/
