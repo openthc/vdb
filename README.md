@@ -1,4 +1,4 @@
-# Cannavis Variety Database
+# Cannabis Variety Database
 
 A Variety (or Strain) Database for software in the Cannabis Industry
 
