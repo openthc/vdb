@@ -1,26 +1,3 @@
-<!DOCTYPE html>
-<html lang="en" translate="no">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="cleartype" content="on">
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#003100">
-<meta name="viewport" content="initial-scale=1, user-scalable=yes">
-<link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
-<link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css" integrity="sha256-2TnSHycBDAm2wpZmgdi0z81kykGPJAkiUY+Wf97RbvY=" crossorigin="anonymous">
-<!-- <link rel="stylesheet" href="https://cdn.openthc.com/css/html.css"> -->
-<title>Strain Database :: OpenTHC</title>
-<style>
-.page-thin {
-	margin: 0 auto;
-	max-width: 800px;
-}
-</style>
-</head>
-<body>
 
 <div class="container">
 <div class="hero-wrap">
@@ -100,24 +77,3 @@
 	</div>
 
 </div>
-
-<footer class="home-mini">
-<div>
-	<a href="https://openthc.com/about/privacy">Privacy</a> | <a href="https://openthc.com/about/tos">Terms</a>
-</div>
-
-<div>
-	<small>
-		<a href="https://openthc.org/">OpenTHC.org</a>
-		| <a href="https://api.openthc.org">API</a>
-		<!-- | <a href="https://p2p.openthc.com">P2P</a> -->
-		| <a href="https://github.com/openthc"><i class="fab fa-github"></i> GitHub</a>
-	</small>
-</div>
-</footer>
-
-<script src="/vendor/jquery/jquery.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-<script src="/vendor/bootstrap/bootstrap.bundle.min.js" integrity="sha256-0upsHgyryiDRjpJLJaHNAYfDi6fDP2CrBuGwQCubzbU=" crossorigin="anonymous"></script>
-
-</body>
-</html>
