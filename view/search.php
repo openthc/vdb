@@ -68,10 +68,10 @@ _search_page_list($search_info);
 foreach ($data['search_data'] as $v) {
 ?>
 	<tr class="hover:bg-gray-100">
-	<td><a href="/v/<?= rawurlencode($v['stub']) ?>"><?= __h($v['name']) ?></a></td>
-	<td><?= $v['type'] ?></td>
-	<td><?= $v['vote'] ?></td>
-	<td><?= $v['stub'] ?></td>
+		<td><a href="/v/<?= rawurlencode($v['stub']) ?>"><?= __h($v['name']) ?></a></td>
+		<td><?= $v['type'] ?></td>
+		<td><?= $v['vote'] ?></td>
+		<td><?= $v['stub'] ?></td>
 	</tr>
 <?php
 }
@@ -87,26 +87,53 @@ foreach ($data['search_data'] as $v) {
 
 function _search_page_list($search_info)
 {
+	$page_list_max_button = 10;
+
+	$q_html = rawurlencode($search_info['q']);
+
+	$max = $search_info['max'];
+
 	echo '<div class="flex items-center justify-center py-4">';
 	echo '<div class="join">';
 	// <a class="btn btn-outline-secondary disabled" style="width:6em;">Pages:</a>
 	// {% if search_info.max > 18 %}
-	if ($search_info['max'] > 18) {
 
-		printf('<a class="btn btn-outline-secondary" href="/search?q=%s&amp;p={{ max(1, search_info.cur - 1) }}"><i class="fa fa-arrow-left"></i></a>'
-			, rawurlencode($search_info['q'])
-		);
+	printf('<a class="btn btn-outline btn-primary join-item" href="/search?q=%s&amp;p=%d"><i class="fa fa-arrow-left"></i></a>'
+		, $q_html
+		, max(1, $search_info['cur'] - 1)
+	);
 
-	// 	{% for i in 1..3 %}
-	// 		<a class="btn btn-outline-secondary" href="/search?q={{ search_info.q }}&amp;p={{ i }}">{{ i }}</a>
-	// 	{% endfor %}
+	if ($search_info['max'] > 10) {
 
-	// 	<!--
-	// 	{% for i in 1..search_info.max %}
-	// 		<a class="btn btn-outline-secondary" href="/search?q={{ search_info.q }}&amp;p={{ loop.index }}">p{{ loop.index }}</a>
-	// 	{% endfor %}
-	// 	-->
+		for ($idx=1; $idx<=3; $idx++) {
+			printf('<a class="btn btn-outline join-item" href="/search?q=%s&amp;p=%d">%d</a>', $q_html, $idx, $idx);
+		}
 
+		echo '<button class="btn btn-outline btn-disabled join-item">...</button>';
+
+		if ($search_info['cur'] > 3) {
+			// Draw the Middle 10?
+			// $mid = ceil($max / 2);
+			$idx = $search_info['cur'] - 1; // $mid - 1;
+			$mid_hi = $search_info['cur'] + 6;
+			for ($idx; $idx<=$mid_hi; $idx++) {
+				printf('<a class="btn btn-outline join-item" href="/search?q=%s&amp;p=%d">%d</a>', $q_html, $idx, $idx);
+			}
+
+		} else {
+
+			$mid = ceil($max / 2);
+			$idx = $mid - 1;
+			$mid_hi = $mid + 1;
+			for ($idx; $idx<=$mid_hi; $idx++) {
+				printf('<a class="btn btn-outline join-item" href="/search?q=%s&amp;p=%d">%d</a>', $q_html, $idx, $idx);
+			}
+		}
+
+		echo '<button class="btn btn-outline btn-disabled join-item">...</button>';
+
+		// $min1 = max(4, $search_info['cur'] - 6);
+		// $max1 = min($min1 + 12, $max);
 	// 	{% set min = max(4, search_info.cur - 6) %}
 	// 	{% set max = min(min + 12, search_info.max) %}
 	// 	{% for i in min..max %}
@@ -119,15 +146,28 @@ function _search_page_list($search_info)
 	// 		<a class="btn btn-outline-secondary" href="/search?q={{ search_info.q }}&amp;p={{ i }}">{{ i }}</a>
 	// 	{% endfor %}
 
-		printf('<a class="btn btn-outline-secondary" href="/search?q=%s&amp;p={{ search_age.cur + 1 }}"><i class="fa fa-arrow-right"></i></a>'
-			, rawurlencode($search_info['q'])
-		);
-
-	} else {
+	// } else {
 	// 	{% for i in 1..search_info.max %}
 	// 		<a class="btn btn-outline-secondary" href="/search?q={{ search_info.q }}&amp;p={{ i }}">{{ i }}</a>
 	// 	{% endfor %}
+	// }
+
+		$idx = $max - 2;
+		for ($idx; $idx<=$max; $idx++) {
+			printf('<a class="btn btn-outline join-item" href="/search?q=%s&amp;p=%d">%d</a>', $q_html, $idx, $idx);
+		}
+
+	} else {
+		for ($idx=1; $idx<=$max; $idx++) {
+			printf('<a class="btn btn-outline join-item" href="/search?q=%s&amp;p=%d">%d</a>', $q_html, $idx, $idx);
+		}
 	}
+
+	printf('<a class="btn btn-outline btn-primary join-item" href="/search?q=%s&amp;p=%d"><i class="fa fa-arrow-right"></i></a>'
+		, $q_html
+		, min($max, $search_info['cur'] + 1)
+	);
+
 	echo '</div>';
 	echo '</div>';
 

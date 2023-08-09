@@ -60,7 +60,7 @@ class Search
 		//$sql.= ' OR full_text @@ ts_query(:q1)';
 		//$sql.= ' OR
 		$sql.= ' ORDER BY name';
-		// $sql.= sprintf(' OFFSET %d', $off);
+		$sql.= sprintf(' OFFSET %d', $off);
 		$sql.= sprintf(' LIMIT %d', $lim);
 
 		$sql_max = preg_replace('/SELECT .+ FROM/', 'SELECT count(id) FROM', $sql);
