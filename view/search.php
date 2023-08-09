@@ -21,15 +21,16 @@
 
 <div class="container mx-auto min-h-screen">
 <?php
-
-if (empty($_GET['q'])) {
+// if (empty($_GET['q'])) {
 ?>
 	<div class="flex items-center justify-center py-4">
 		<div class="join">
-			<!-- <a class="btn join-item">Strains:</a> -->
 			<?php
-			foreach ($data['search_pick'] as $k => $v) {
-				printf('<a class="btn btn-outline join-item" href="/search?q=^%s" title="Strains starting with %s (%s)">%s</a>'
+			$char_want = preg_match('/^\^(.)/', $_GET['q'], $m) ? $m[1] : '';
+			$char_list = array_merge(['#'], range('A', 'Z'));
+			foreach ($char_list as $k) {
+				printf('<a class="btn btn-outline %s join-item" href="/search?q=^%s" title="Strains starting with %s (%s)">%s</a>'
+					, (($char_want == $k) ? 'btn-active' : '')
 					, rawurlencode($k)
 					, __h($k)
 					, __h($v)
@@ -40,7 +41,7 @@ if (empty($_GET['q'])) {
 		</div>
 	</div>
 <?php
-}
+// }
 ?>
 
 <?php
@@ -79,6 +80,9 @@ foreach ($data['search_data'] as $v) {
 </tbody>
 </table>
 </div>
+<?php
+_search_page_list($search_info);
+?>
 
 </div>
 
