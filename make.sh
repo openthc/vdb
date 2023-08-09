@@ -26,13 +26,9 @@ mkdir -p webroot/vendor/jquery-ui/
 cp node_modules/jquery-ui/dist/themes/base/jquery-ui.min.css webroot/vendor/jquery-ui/jquery-ui.min.css
 cp node_modules/jquery-ui/dist/jquery-ui.js webroot/vendor/jquery-ui/jquery-ui.js
 
-# Bootstrap
-mkdir -p webroot/vendor/bootstrap/
-cp ./node_modules/bootstrap/dist/css/bootstrap.min.css webroot/vendor/bootstrap/
-cp ./node_modules/bootstrap/dist/css/bootstrap.min.css.map webroot/vendor/bootstrap/
-cp ./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js webroot/vendor/bootstrap/
-
 # font awesome
 mkdir -p webroot/vendor/fontawesome/css webroot/vendor/fontawesome/webfonts
 cp node_modules/@fortawesome/fontawesome-free/css/all.min.css webroot/vendor/fontawesome/css/
 cp node_modules/@fortawesome/fontawesome-free/webfonts/* webroot/vendor/fontawesome/webfonts/
+
+npx tailwindcss --output webroot/css/main.css

@@ -1,19 +1,20 @@
 
-<div class="container">
-<div class="hero-wrap">
-	<div class="hero-core">
-		<h1>Cannabis Strain Database</h1>
-		<h2>3,000+ verified strains, 12000+ alternate spellings &amp; suggestions</h2>
-	</div>
-</div>
+
+<div class="hero min-h-[20rem] bg-base-200">
+  <div class="hero-content text-center">
+    <div class="max-w-lg">
+      <h1 class="text-5xl font-bold">Cannabis Variety Database</h1>
+      <h2 class="py-6">3,000+ verified strains, 12000+ alternate spellings &amp; suggestions</h2>
+      <a class="btn btn-primary" href="/browse">Browse</a>
+    </div>
+  </div>
 </div>
 
-
-<div class="page-thin">
+<div class="container mx-auto">
 
 	<div class="card">
-	<h2 class="card-header">The Problem</h2>
 	<div class="card-body">
+		<h2 class="card-title">The Problem</h2>
 
 		<p>
 		There are over 200 software providers across the world dealing with cannabis data.
@@ -31,8 +32,8 @@
 	<hr>
 
 	<div class="card">
-	<h2 class="card-header">A Solution Proposal</h2>
 	<div class="card-body">
+		<h2 class="card-title">A Solution Proposal</h2>
 		<p>A simple search API and static data-sets in multiple formats for any/all software providers to use.</p>
 		<p>A clearly defined normaliztion pattern.</p>
 		<p>A community driven submission and verification system.</p>
@@ -42,36 +43,20 @@
 
 	<hr>
 
-	<div class="row">
-		<div class="col" style="text-align:center;">
-			<a class="btn btn-outline-success" href="/search">Browse Strains</a>
-		</div>
-		<div class="col" style="text-align:center;">
-			<a class="btn btn-outline-success" href="/api">View API</a>
-		</div>
-		<div class="col" style="text-align:center;">
-			<button class="btn btn-outline-success" data-toggle="collapse" data-target="#download-list">Download Data</button>
-		</div>
+	<div class="py-8">
+		<a class="btn btn-outline-success" href="/search">Browse Strains</a>
+		<a class="btn btn-outline-success" href="/api">View API</a>
+		<button class="btn btn-outline-success" data-toggle="collapse" data-target="#download-list">Download Data</button>
 	</div>
 
 	<div class="collapse" id="download-list">
 	<hr>
-	<div class="row">
-		<div class="col">
-			<a class="btn btn-block btn-outline-primary" href="/download/strains.sql"><i class="fa fa-download"></i> SQL</a>
-		</div>
-		<div class="col">
-			<a class="btn btn-block btn-outline-primary" href="/download/strains.json"><i class="fa fa-download"></i> JSON</a>
-		</div>
-		<div class="col">
-			<a class="btn btn-block btn-outline-primary" href="/download/strains.csv"><i class="fa fa-download"></i> CSV</a>
-		</div>
-		<div class="col">
-			<a class="btn btn-block btn-outline-primary" href="/download/strains.tsv"><i class="fa fa-download"></i> TSV</a>
-		</div>
-		<div class="col">
-			<a class="btn btn-block btn-outline-primary" href="/download/strains.xml"><i class="fa fa-download"></i> XML</a>
-		</div>
+	<div class="py-8">
+		<a class="btn btn-outline-primary" href="/download/strains.sql"><i class="fa fa-download"></i> SQL</a>
+		<a class="btn btn-outline-primary" href="/download/strains.json"><i class="fa fa-download"></i> JSON</a>
+		<a class="btn btn-outline-primary" href="/download/strains.csv"><i class="fa fa-download"></i> CSV</a>
+		<a class="btn btn-outline-primary" href="/download/strains.tsv"><i class="fa fa-download"></i> TSV</a>
+		<a class="btn btn-outline-primary" href="/download/strains.xml"><i class="fa fa-download"></i> XML</a>
 	</div>
 	<hr>
 	</div>
