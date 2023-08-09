@@ -1,6 +1,6 @@
 
 
-<div class="hero min-h-[20rem] bg-base-200">
+<div class="hero bg-base-200">
   <div class="hero-content text-center">
     <div class="max-w-lg">
       <h1 class="text-5xl font-bold">Cannabis Variety Database</h1>

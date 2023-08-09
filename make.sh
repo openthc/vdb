@@ -29,7 +29,7 @@ mkdir -p webroot/vendor/fontawesome/css webroot/vendor/fontawesome/webfonts
 cp node_modules/@fortawesome/fontawesome-free/css/all.min.css webroot/vendor/fontawesome/css/
 cp node_modules/@fortawesome/fontawesome-free/webfonts/* webroot/vendor/fontawesome/webfonts/
 
-npx tailwindcss --output webroot/css/main.css
+npx tailwindcss --input sass/base.css --output webroot/css/main.css
 
 o=${OPENTHC_ORIGIN:-}
 if [ -z "$o" ]
