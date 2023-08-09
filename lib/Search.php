@@ -3,7 +3,7 @@
  * Search Interface
  */
 
-namespace App;
+namespace OpenTHC\VDB;
 
 class Search
 {
@@ -43,32 +43,35 @@ class Search
 				$sql_where[] = 'name ~ :q0';
 				$arg[':q0'] = '^[0123456789].*';
 			} else {
-				$sql_where[] = 'name ILIKE :q0';
+				$sql_where[] = 'name LIKE :q0';
 				$arg[':q0'] = sprintf('%s%%', $q);
 			}
 		} else {
-			$sql_where[] = 'name ILIKE :q0';
+			$sql_where[] = 'name LIKE :q0';
 			$arg[':q0'] = sprintf('%%%s%%', $q);
 		}
 
-		$sql = 'SELECT * FROM strain';
+		$sql = 'SELECT * FROM variety';
 		$sql.= ' WHERE ';
 		$sql.= implode(' AND ', $sql_where);
 		//$sql.= ' OR full_text @@ ts_query(:q1)';
 		//$sql.= ' OR
 		$sql.= ' ORDER BY name';
-		$sql.= sprintf(' OFFSET %d', $off);
+		// $sql.= sprintf(' OFFSET %d', $off);
 		$sql.= sprintf(' LIMIT %d', $lim);
+		// var_dump($sql);
 
 		$sql_max = preg_replace('/SELECT .+ FROM/', 'SELECT count(id) FROM', $sql);
 		$sql_max = preg_replace('/LIMIT \d+/', null, $sql_max);
 		$sql_max = preg_replace('/OFFSET \d+/', null, $sql_max);
 		$sql_max = preg_replace('/ORDER BY .+/', null, $sql_max);
 		$arg_max = $arg;
-		//var_dump($sql_max);
+
+		// var_dump($sql_max);
 		//var_dump($arg_max);
 
-		$max = $this->_container->DB->fetchOne($sql_max, $arg_max);
+		$dbc = _dbc();
+		$max = $dbc->fetchOne($sql_max, $arg_max);
 
 		//$qry = $sdb->prepare($sql);
 		//$qry->execute();
@@ -77,7 +80,7 @@ class Search
 		//$qry->closeCursor();
 		//var_dump($sql);
 		//var_dump($arg);
-		$res = $this->_container->DB->fetchAll($sql, $arg);
+		$res = $dbc->fetchAll($sql, $arg);
 
 		return array(
 			'page' => array(
