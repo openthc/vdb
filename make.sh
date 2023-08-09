@@ -17,8 +17,6 @@ composer update --no-ansi --no-dev --no-progress --quiet --classmap-authoritativ
 
 npm install --quiet >/dev/null
 
-# mkdir -p webroot/vendor
-
 mkdir -p webroot/vendor/jquery/
 cp node_modules/jquery/dist/jquery.min.js webroot/vendor/jquery/jquery.min.js
 
@@ -32,3 +30,12 @@ cp node_modules/@fortawesome/fontawesome-free/css/all.min.css webroot/vendor/fon
 cp node_modules/@fortawesome/fontawesome-free/webfonts/* webroot/vendor/fontawesome/webfonts/
 
 npx tailwindcss --output webroot/css/main.css
+
+o=${OPENTHC_ORIGIN:-}
+if [ -z "$o" ]
+then
+	echo "NO ORIGIN"
+	# exit 1
+else
+	curl "$o/home" > webroot/index.html
+fi
