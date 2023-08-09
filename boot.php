@@ -19,4 +19,26 @@
 
 define('APP_ROOT', dirname(__FILE__));
 
+error_reporting(E_ALL & ~ E_NOTICE & ~ E_WARNING);
+
+openlog('openthc-vdb', LOG_ODELAY|LOG_PID, LOG_LOCAL0);
+
 require_once(APP_ROOT . '/vendor/autoload.php');
+
+/**
+ * Singular Database Connection
+ */
+function _dbc()
+{
+	static $dbc;
+
+	if (empty($dbc)) {
+		$dbf = sprintf('%s/var/variety.sqlite', APP_ROOT);
+		$dbc = new \Edoceo\Radix\DB\SQL(sprintf('sqlite:%s', $dbf));
+	}
+
+	// Create Tables?
+
+	return $dbc;
+
+}
