@@ -3,18 +3,17 @@
 ?>
 
 <div class="hero bg-base-200">
-	<div class="hero-content text-center">
-		<div class="max-w-lg">
-
+	<div class="hero-content flex-col text-center" style="min-width: 40rem;">
+		<div class="grow min-w-full">
 			<h1 class="text-5xl font-bold">Search</h1>
-
+		</div>
+		<div class="grow min-w-full">
 			<form>
-				<div class="join py-8">
-					<input class="input input-bordered join-item" name="q" placeholder="Search.." value="<?= __h($_GET['q']) ?>">
+				<div class="join min-w-full py-8">
+					<input class="input input-bordered join-item grow" name="q" placeholder="Search.." value="<?= __h($_GET['q']) ?>">
 					<button class="btn btn-primary join-item"><i class="fa fa-search"></i> Search</button>
 				</div>
 			</form>
-
 		</div>
 	</div>
 </div>
