@@ -46,11 +46,11 @@ class Search
 				$sql_where[] = 'name ~* :q0';
 				$arg[':q0'] = sprintf('^%s', $m[1]);
 			} else {
-				$sql_where[] = 'name LIKE :q0';
+				$sql_where[] = 'name ILIKE :q0';
 				$arg[':q0'] = sprintf('%s%%', $q);
 			}
 		} else {
-			$sql_where[] = 'name LIKE :q0';
+			$sql_where[] = 'name ILIKE :q0';
 			$arg[':q0'] = sprintf('%%%s%%', $q);
 		}
 
