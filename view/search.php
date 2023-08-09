@@ -2,7 +2,7 @@
 
 ?>
 
-<div class="hero min-h-[20rem] bg-base-200">
+<div class="hero bg-base-200">
 	<div class="hero-content text-center">
 		<div class="max-w-lg">
 
@@ -20,29 +20,25 @@
 </div>
 
 <div class="container mx-auto min-h-screen">
-<?php
-// if (empty($_GET['q'])) {
-?>
-	<div class="flex items-center justify-center py-4">
-		<div class="join">
-			<?php
-			$char_want = preg_match('/^\^(.)/', $_GET['q'], $m) ? $m[1] : '';
-			$char_list = array_merge(['#'], range('A', 'Z'));
-			foreach ($char_list as $k) {
-				printf('<a class="btn btn-outline %s join-item" href="/search?q=^%s" title="Strains starting with %s (%s)">%s</a>'
-					, (($char_want == $k) ? 'btn-active' : '')
-					, rawurlencode($k)
-					, __h($k)
-					, __h($v)
-					, __h($k)
-				);
-			}
-			?>
-		</div>
+
+
+<section class="flex items-center justify-center py-4">
+	<div class="join">
+		<?php
+		$char_want = preg_match('/^\^(.)/', $_GET['q'], $m) ? $m[1] : '';
+		$char_list = array_merge(['#'], range('A', 'Z'));
+		foreach ($char_list as $k) {
+			printf('<a class="btn btn-outline %s join-item" href="/search?q=^%s" title="Strains starting with %s (%s)">%s</a>'
+				, (($char_want == $k) ? 'btn-active' : '')
+				, rawurlencode($k)
+				, __h($k)
+				, __h($v)
+				, __h($k)
+			);
+		}
+		?>
 	</div>
-<?php
-// }
-?>
+</section>
 
 <?php
 // Search Pager
@@ -55,7 +51,7 @@ _search_page_list($search_info);
 // Search Results
 ?>
 <div class="overflow-x-auto mt-4">
-<table class="table table-sm table-hover">
+<table class="table table-sm">
 <thead>
 <tr>
 	<th>Strain</th>
