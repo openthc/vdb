@@ -42,6 +42,9 @@ class Search
 				// $q = sprintf(')
 				$sql_where[] = 'name ~ :q0';
 				$arg[':q0'] = '^[0123456789].*';
+			} elseif (preg_match('/^\^(\w)/', $q, $m)) {
+				$sql_where[] = 'name ~* :q0';
+				$arg[':q0'] = sprintf('^%s', $m[1]);
 			} else {
 				$sql_where[] = 'name LIKE :q0';
 				$arg[':q0'] = sprintf('%s%%', $q);
@@ -59,7 +62,6 @@ class Search
 		$sql.= ' ORDER BY name';
 		// $sql.= sprintf(' OFFSET %d', $off);
 		$sql.= sprintf(' LIMIT %d', $lim);
-		// var_dump($sql);
 
 		$sql_max = preg_replace('/SELECT .+ FROM/', 'SELECT count(id) FROM', $sql);
 		$sql_max = preg_replace('/LIMIT \d+/', null, $sql_max);
@@ -67,19 +69,9 @@ class Search
 		$sql_max = preg_replace('/ORDER BY .+/', null, $sql_max);
 		$arg_max = $arg;
 
-		// var_dump($sql_max);
-		//var_dump($arg_max);
-
 		$dbc = _dbc();
 		$max = $dbc->fetchOne($sql_max, $arg_max);
 
-		//$qry = $sdb->prepare($sql);
-		//$qry->execute();
-		//$qry->setFetchMode(\PDO::FETCH_ASSOC);
-		//$res = $qry->fetchAll();
-		//$qry->closeCursor();
-		//var_dump($sql);
-		//var_dump($arg);
 		$res = $dbc->fetchAll($sql, $arg);
 
 		return array(

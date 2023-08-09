@@ -25,6 +25,10 @@ openlog('openthc-vdb', LOG_ODELAY|LOG_PID, LOG_LOCAL0);
 
 require_once(APP_ROOT . '/vendor/autoload.php');
 
+if ( ! \OpenTHC\Config::init(APP_ROOT) ) {
+	_exit_html_fail('<h1>Invalid Application Configuration [VDB-029]</h1>', 500);
+}
+
 /**
  * Singular Database Connection
  */
@@ -33,11 +37,15 @@ function _dbc()
 	static $dbc;
 
 	if (empty($dbc)) {
-		$dbf = sprintf('%s/var/variety.sqlite', APP_ROOT);
-		$dbc = new \Edoceo\Radix\DB\SQL(sprintf('sqlite:%s', $dbf));
-	}
 
-	// Create Tables?
+		$cfg = \OpenTHC\Config::get('database/main');
+		$dsn = sprintf('pgsql:host=%s;dbname=%s;user=%s;password=%s', $cfg['hostname'], $cfg['database'], $cfg['username'], $cfg['password']);
+
+		// $dbf = sprintf('%s/var/variety.sqlite', APP_ROOT);
+		// $dsn = sprintf('sqlite:%s', $dbf);
+
+		$dbc = new \Edoceo\Radix\DB\SQL($dsn);
+	}
 
 	return $dbc;
 
