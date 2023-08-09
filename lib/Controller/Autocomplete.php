@@ -12,9 +12,6 @@ class Autocomplete extends \OpenTHC\Controller\Base
 	 */
 	function __invoke($REQ, $RES, $ARG)
 	{
-		// CORS
-		$RES = $RES->withHeader('access-control-allow-origin', $_SERVER['HTTP_ORIGIN']);
-
 		$q = $_GET['q'];
 		if ( ! empty($_GET['term'])) {
 			$q = $_GET['term'];
