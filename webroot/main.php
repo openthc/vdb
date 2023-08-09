@@ -23,26 +23,23 @@ require_once(dirname(dirname(__FILE__)) . '/boot.php');
 $cfg = array('debug' => true);
 $app = new \OpenTHC\App($cfg);
 
-$con = $app->getContainer();
-$con['DB'] = function() {
-	$cfg = \OpenTHC\Config::get('database_main');
-	return new \Edoceo\Radix\DB\SQL(sprintf('pgsql:host=%s;dbname=%s', $cfg['hostname'], $cfg['database']), $cfg['username'], $cfg['password']);
-};
-
 // Lookup Specific Datas
-$app->get('/api', 'App\Controller\API')
+$app->get('/', 'OpenTHC\VDB\Controller\Home');
+$app->get('/home', 'OpenTHC\VDB\Controller\Home');
+
+$app->get('/api', 'OpenTHC\VDB\Controller\API')
 	->add('OpenTHC\Middleware\CORS');
 
 // Lookup Specific Datas
-$app->get('/api/autocomplete', 'App\Controller\Autocomplete')
+$app->get('/api/autocomplete', 'OpenTHC\VDB\Controller\Autocomplete')
 	->add('OpenTHC\Middleware\CORS');
 
 // Lookup Specific Datas
-$app->get('/api/search', 'App\Controller\Search');
+$app->get('/api/search', 'OpenTHC\VDB\Controller\Search');
 
 // Trusted Host query /Search to search the network
 //$app->get('/search', 'Example_Search');
-$app->get('/search', 'App\Controller\Search')
+$app->get('/search', 'OpenTHC\VDB\Controller\Search')
 //	->add('Middleware_Verify_HMAC')
 //	->add('Middleware_Verify_Self')
 //	->add('Middleware_Verify_DNS');
@@ -50,15 +47,15 @@ $app->get('/search', 'App\Controller\Search')
 
 // Trusted Host query /Search to search the network
 //$app->get('/search', 'Example_Search');
-$app->get('/strain/{stub}', 'App\Controller\Strain')
+$app->get('/strain/{stub}', 'OpenTHC\VDB\Controller\Strain')
 //	->add('Middleware_Verify_HMAC')
 //	->add('Middleware_Verify_Self')
 //	->add('Middleware_Verify_DNS');
 	;
 
-$app->get('/downloads', 'App\Controller\Downloads');
-$app->get('/download/{format}', 'App\Controller\Download');
-$app->get('/random', 'App\Controller\Random');
+$app->get('/downloads', 'OpenTHC\VDB\Controller\Downloads');
+$app->get('/download/{format}', 'OpenTHC\VDB\Controller\Download');
+$app->get('/random', 'OpenTHC\VDB\Controller\Random');
 
 $app->run();
 

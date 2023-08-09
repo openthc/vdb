@@ -3,7 +3,7 @@
  * Downloads
  */
 
-namespace App\Controller;
+namespace OpenTHC\VDB\Controller;
 
 use Edoceo\Radix\DB\SQL;
 
@@ -36,7 +36,7 @@ class Download extends \OpenTHC\Controller\Base
 
 	function loadStrains()
 	{
-		$dbc = $this->_container->DB;
+		$dbc = _dbc();
 		$sql = 'SELECT * FROM strain ORDER BY name';
 		$res = $dbc->fetchAll($sql);
 		return $res;
