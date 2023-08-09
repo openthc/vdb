@@ -5,7 +5,7 @@
     <div class="max-w-lg">
       <h1 class="text-5xl font-bold">Cannabis Variety Database</h1>
       <h2 class="py-6">3,000+ verified strains, 12000+ alternate spellings &amp; suggestions</h2>
-      <a class="btn btn-primary" href="/browse">Browse</a>
+      <a class="btn btn-primary" href="/search">Browse</a>
     </div>
   </div>
 </div>
