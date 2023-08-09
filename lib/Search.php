@@ -38,7 +38,7 @@ class Search
 		);
 
 		if (strlen($q) <= 2) {
-			if ('#' == $q) {
+			if ('^#' == $q) {
 				// $q = sprintf(')
 				$sql_where[] = 'name ~ :q0';
 				$arg[':q0'] = '^[0123456789].*';
