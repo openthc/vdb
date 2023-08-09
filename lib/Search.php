@@ -7,11 +7,6 @@ namespace OpenTHC\VDB;
 
 class Search
 {
-	function __construct($c)
-	{
-		$this->_container = $c;
-	}
-
 	/**
 	 * Search
 	 * @param [type] $q Query Term

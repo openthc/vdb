@@ -30,7 +30,7 @@ class Autocomplete extends \OpenTHC\Controller\Base
 			$q = "%$q%";
 		}
 
-		$sub_con = new \OpenTHC\VDB\Search($this->_container);
+		$sub_con = new \OpenTHC\VDB\Search();
 		$res = $sub_con->search($q);
 
 		$ret = array();
