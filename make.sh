@@ -17,19 +17,19 @@ composer update --no-ansi --no-dev --no-progress --quiet --classmap-authoritativ
 
 npm install --quiet >/dev/null
 
-mkdir -p webroot/vendor/jquery/
-cp node_modules/jquery/dist/jquery.min.js webroot/vendor/jquery/jquery.min.js
+. vendor/openthc/common/lib/lib.sh
 
-mkdir -p webroot/vendor/jquery-ui/
-cp node_modules/jquery-ui/dist/themes/base/jquery-ui.min.css webroot/vendor/jquery-ui/jquery-ui.min.css
-cp node_modules/jquery-ui/dist/jquery-ui.js webroot/vendor/jquery-ui/jquery-ui.js
+copy_bootstrap
+copy_fontawesome
+copy_jquery
 
-# font awesome
-mkdir -p webroot/vendor/fontawesome/css webroot/vendor/fontawesome/webfonts
-cp node_modules/@fortawesome/fontawesome-free/css/all.min.css webroot/vendor/fontawesome/css/
-cp node_modules/@fortawesome/fontawesome-free/webfonts/* webroot/vendor/fontawesome/webfonts/
+# mkdir -p webroot/vendor/jquery-ui/
+# cp node_modules/jquery-ui/dist/themes/base/jquery-ui.min.css webroot/vendor/jquery-ui/jquery-ui.min.css
+# cp node_modules/jquery-ui/dist/jquery-ui.js webroot/vendor/jquery-ui/jquery-ui.js
 
-npx tailwindcss --input sass/base.css --output webroot/css/main.css
+npx tailwindcss \
+	--input sass/base.css \
+	--output webroot/css/main.css
 
 o=${OPENTHC_ORIGIN:-}
 if [ -z "$o" ]
