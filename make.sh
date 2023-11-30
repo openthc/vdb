@@ -23,10 +23,8 @@ copy_bootstrap
 copy_fontawesome
 copy_jquery
 
-# mkdir -p webroot/vendor/jquery-ui/
-# cp node_modules/jquery-ui/dist/themes/base/jquery-ui.min.css webroot/vendor/jquery-ui/jquery-ui.min.css
-# cp node_modules/jquery-ui/dist/jquery-ui.js webroot/vendor/jquery-ui/jquery-ui.js
-
+#
+# Tailwind
 npx tailwindcss \
 	--input sass/base.css \
 	--output webroot/css/main.css
