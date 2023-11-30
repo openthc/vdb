@@ -35,23 +35,14 @@ $app->get('/api/autocomplete', 'OpenTHC\VDB\Controller\Autocomplete')
 	->add('OpenTHC\Middleware\CORS');
 
 // Lookup Specific Datas
-$app->get('/api/search', 'OpenTHC\VDB\Controller\Search');
+$app->get('/api/search', 'OpenTHC\VDB\Controller\Search')
+	->add('OpenTHC\Middleware\CORS');
 
-// Trusted Host query /Search to search the network
-//$app->get('/search', 'Example_Search');
-$app->get('/search', 'OpenTHC\VDB\Controller\Search')
-//	->add('Middleware_Verify_HMAC')
-//	->add('Middleware_Verify_Self')
-//	->add('Middleware_Verify_DNS');
-	;
+// Basic Search
+$app->get('/search', 'OpenTHC\VDB\Controller\Search');
 
-// Trusted Host query /Search to search the network
-//$app->get('/search', 'Example_Search');
-$app->get('/strain/{stub}', 'OpenTHC\VDB\Controller\Strain')
-//	->add('Middleware_Verify_HMAC')
-//	->add('Middleware_Verify_Self')
-//	->add('Middleware_Verify_DNS');
-	;
+// View Single Item
+$app->get('/v/{stub}', 'OpenTHC\VDB\Controller\Single');
 
 $app->get('/downloads', 'OpenTHC\VDB\Controller\Downloads');
 $app->get('/download/{format}', 'OpenTHC\VDB\Controller\Download');
