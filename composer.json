@@ -13,9 +13,10 @@
 	"require": {
 		"edoceo/lowline": "2022.0.280",
 		"edoceo/radix": "2021.0.0",
-		"openthc/common": "dev-master"
+		"openthc/common": "dev-main"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "9.6.4"
+		"phpstan/phpstan": "1.11.8",
+		"phpunit/phpunit": "9.6.20"
 	}
 }
