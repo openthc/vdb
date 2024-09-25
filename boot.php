@@ -18,6 +18,7 @@
  */
 
 define('APP_ROOT', dirname(__FILE__));
+define('APP_VERSION', '420.24.269');
 
 error_reporting(E_ALL & ~ E_NOTICE & ~ E_WARNING);
 
